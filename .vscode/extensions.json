@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "google.gemini-code-assistant-vscode",
+    "ms-vscode.azure-repos",
+    "github.vscode-pull-request-github"
+  ]
+}

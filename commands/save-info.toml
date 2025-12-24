@@ -1,0 +1,19 @@
+prompt = """
+I have found new useful information at this URL: `{{args}}`.
+
+Your Task:
+1. Fetch the content using `web_fetch`.
+2. Analyze the content and categorize it into one of:
+   - `knowledge-base/best-practices`
+   - `knowledge-base/prompts`
+   - `knowledge-base/documentation`
+3. Create a new `.md` file in the correct category using a descriptive slug filename.
+4. Save the following in the file (All content in ENGLISH):
+   - Original URL.
+   - A concise executive summary.
+   - Detailed key takeaways and technical points for future reference.
+5. Update `knowledge-base/INDEX.md` with the new entry.
+
+IMPORTANT: After finishing the task, confirm the success to the user in LITHUANIAN.
+"""
+description = "Fetches info from a URL, categorizes it, and saves it to the KB in English."

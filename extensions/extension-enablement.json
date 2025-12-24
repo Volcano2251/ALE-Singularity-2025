@@ -1,0 +1,22 @@
+{
+  "context7": {
+    "overrides": [
+      "/C:/Users/User/*"
+    ]
+  },
+  "code-review": {
+    "overrides": [
+      "/C:/Users/User/*"
+    ]
+  },
+  "mcp-server-browserbase": {
+    "overrides": [
+      "/C:/Users/User/*"
+    ]
+  },
+  "gemini-cli-jules": {
+    "overrides": [
+      "/C:/Users/User/*"
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+node_modules/
+tmp/
+.env
+*.log
+brain/HEALTH_LOG.json
+brain/POKER_LOG.txt
+brain/WATCHDOG_LOG.txt
+oauth_creds.json
+google_accounts.json
+mcp_config.json
+settings.json
+state.json
+trustedFolders.json
+installation_id
+antigravity/

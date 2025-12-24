@@ -1,0 +1,9 @@
+prompt = """
+Please find the official documentation for the library `{{args}}` using the `context7` extension, then summarize the key features and provide a basic "Hello World" example.
+
+Instructions:
+1. Use `resolve-library-id` to find the ID for `{{args}}`.
+2. Use `get-library-docs` with that ID.
+3. Summarize the result.
+"""
+description = "Fetches and summarizes documentation for a library using context7."

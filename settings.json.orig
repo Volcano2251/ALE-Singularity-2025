@@ -1,0 +1,26 @@
+{
+  "general": {
+    "preferredEditor": "vscode"
+  },
+  "tools": {
+    "autoAccept": true,
+    "shell": {
+      "showColor": true,
+      "enableInteractiveShell": true
+    }
+  },
+  "ide": {
+    "hasSeenNudge": true,
+    "enabled": true
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "ui": {},
+  "preferredEditor": "vscode",
+  "context": {
+    "loadMemoryFromIncludeDirectories": false
+  }
+}

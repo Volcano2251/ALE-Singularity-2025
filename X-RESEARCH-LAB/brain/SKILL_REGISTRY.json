@@ -1,0 +1,22 @@
+{
+  "skills": [
+    {
+      "id": "web-research",
+      "name": "Web Research & Knowledge Ingestion",
+      "description": "Gebėjimas naršyti, ekstrahuoti ir sisteminti info iš URL.",
+      "tools": ["web_fetch", "google_web_search"]
+    },
+    {
+      "id": "code-analysis",
+      "name": "Semantic Code Analysis",
+      "description": "Gilus kodo struktūros ir standartų tikrinimas.",
+      "tools": ["search_file_content", "read_file", "list_directory"]
+    },
+    {
+      "id": "skill-creation",
+      "name": "Autonomous Skill Generation",
+      "description": "Sistemos gebėjimas kurti naujus įrankius ir instrukcijas sau.",
+      "tools": ["write_file", "replace"]
+    }
+  ]
+}
