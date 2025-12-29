@@ -10,6 +10,14 @@ param(
 $ErrorActionPreference = "Continue"
 $ScriptRoot = $PSScriptRoot
 
+# Helper function for progress bar
+function Get-ProgressBar {
+    param([int]$Percentage)
+    $filled = [math]::Floor($Percentage / 10)
+    $empty = 10 - $filled
+    return "[$('█' * $filled)$('░' * $empty)]"
+}
+
 Write-Host "`n╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Cyan
 Write-Host "║          WORKSPACE EVALUATION FRAMEWORK                      ║" -ForegroundColor Cyan
 Write-Host "║          $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')                           ║" -ForegroundColor Cyan
@@ -87,14 +95,6 @@ Write-Host "║  AI Agentai:         $($Results.AgentPerformance.Score.ToString(
 Write-Host "╠══════════════════════════════════════════════════════════════╣" -ForegroundColor Green
 Write-Host "║  BENDRAS ĮVERTINIMAS:  $overallScore% (Grade: $grade)                      ║" -ForegroundColor $(if($grade -eq 'A'){'Green'}elseif($grade -eq 'B'){'Yellow'}else{'Red'})
 Write-Host "╚══════════════════════════════════════════════════════════════╝`n" -ForegroundColor Green
-
-# Helper function for progress bar
-function Get-ProgressBar {
-    param([int]$Percentage)
-    $filled = [math]::Floor($Percentage / 10)
-    $empty = 10 - $filled
-    return "[$('█' * $filled)$('░' * $empty)]"
-}
 
 # Show recommendations
 Write-Host "📋 REKOMENDACIJOS:" -ForegroundColor Cyan
