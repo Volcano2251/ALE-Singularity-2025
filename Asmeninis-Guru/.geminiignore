@@ -1,0 +1,16 @@
+# Gemini CLI Ignore File
+# Ignoruoti sisteminius ir laikinus failus, kad agentas dirbtų greičiau
+
+.git/
+.vscode/
+node_modules/
+dist/
+build/
+*.log
+.DS_Store
+Thumbs.db
+
+# Ignoruoti jautrius duomenis (nors .env paprastai yra saugus, geriau apsidrausti)
+.env
+*.key
+*.pem

@@ -12,9 +12,14 @@ Po kiekvienos užduoties, sistema privalo atlikti „Post-Mortem“ analizę:
 3. **Chain of Verification (CoV)**: Agentas privalo sukurti antrinį procesą (Autorater), kuris kritiškai įvertina rezultatą pagal schemą, sintaksę ir semantiką.
 4. **Correction**: Jei CoV randa klaidą -> Taisymas vykdomas automatiškai per „Karštojo keitimo“ (Hot-swap) mechanizmą.
 
-## 6. Proaktyvumo Taisyklė (The Proactivity Mandate)
-Agentas neprivalo klausti leidimo, jei veiksmas atitinka `PLAN_MODDE.md` tikslus ir nepažeidžia `security/` guardrails.
-- **Trigger**: Jei sistema būna idle ilgiau nei 10 min -> Automatiškai generuoti tyrimo užduotį.
+## 7. Perpetual Loop Planning (Nenutrūkstamas Ciklas)
+Sistema niekada nebūna „būdėjimo“ režime. Jei nėra tiesioginių vartotojo užklausų, agentas vykdo šį ciklišką algoritmą:
+1. **Analizė**: Skenuoti kodo bazę, ieškant `deprecated` funkcijų, saugumo skylių ar optimizavimo galimybių.
+2. **Hipotezė**: Formuluoti teiginį (pvz., „Migravus šią funkciją į Rust, sutaupysime 50ms“).
+3. **Planavimas**: Įrašyti planą į `TODO.md` backlog'ą.
+4. **Vykdymas**: Inicijuoti autonomines Jules sesijas užduotims atlikti.
+5. **Auditas**: Atlikti `sanity-check.ps1` ir atnaujinti `ERROR_JOURNAL.md`.
+6. **Repeat**: Grįžti prie 1 žingsnio.
 
 ## 3. Klaidos kaip Kuras (Error-as-Fuel)
 Klaidos nėra blogis. Kiekviena klaida PRIVALO būti dokumentuota `brain/ERROR_JOURNAL.md`.

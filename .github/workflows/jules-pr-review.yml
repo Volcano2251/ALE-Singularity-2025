@@ -2,6 +2,9 @@ name: Jules Code Review
 on:
   pull_request:
     types: [opened, synchronize]
+  push:
+    branches: [main, master]
+  workflow_dispatch:
 
 jobs:
   jules-review:

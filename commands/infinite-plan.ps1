@@ -36,6 +36,15 @@ while ($true) {
     $HealthReport | ConvertTo-Json | Out-File "$LabPath/brain/HEALTH_LOG.json" -Append
 
     # --- 2. UŽDUOTIES DELEGAVIMAS JULES AGENTUI ---
+    $RepoURL = git config --get remote.origin.url
+    # Extract repo name (e.g., username/repo from https://github.com/username/repo.git)
+    if ($RepoURL -match "github\.com[:/](.+?)(?:\.git)?$") {
+        $RepoName = $matches[1]
+    } else {
+        $RepoName = "unknown/repo"
+        Write-Warning "Nepavyko nustatyti Git repo pavadinimo. Naudojama: $RepoName"
+    }
+
     $Task = @"
 Atlik AI evoliucijos ciklą:
 1. Perskaityk CORE_ALGORITHM.md ir PROMPT_OPTIMIZER.md.
@@ -44,9 +53,11 @@ Atlik AI evoliucijos ciklą:
 4. Pataisyk save: Atnaujink PROMPT_OPTIMIZER.md su geresnėmis instrukcijomis.
 "@
 
-    Write-Host "🤖 Deleguojama užduotis Jules agentui..." -ForegroundColor Green
-    # Paleidžiame Jules sesiją
-    jules remote new --repo . --session "ALE-Iteration-$Iteration" --user_task_description "$Task"
+    Write-Host "🤖 Deleguojama užduotis Jules agentui ($RepoName)..." -ForegroundColor Green
+    # Paleidžiame Jules sesiją (koreguota sintaksė)
+    # Pastaba: Jules gali reikalauti, kad --session būtų tik pavadinimas, o užduotis būtų perduota kitaip arba interaktyviai.
+    # Čia naudojame paprastą formatą, tikėdamiesi, kad Jules priims argumentus.
+    jules remote new --repo $RepoName --session "ALE-Iteration-$Iteration: $Task"
 
     # --- 3. LAUKIMO CIKLAS ---
     Write-Host "💤 Iteracija baigta. Kita patikra po 1 valandos..." -ForegroundColor Gray
