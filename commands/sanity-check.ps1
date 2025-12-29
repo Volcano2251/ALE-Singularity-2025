@@ -13,12 +13,16 @@ if (Test-Path "Gemini-voice-assistant/.eslintrc.json") {
     Write-Host "✅ Standartai: ESLint konfigūracija paruošta" -ForegroundColor Green
 }
 
-# 3. Patikriname serverio saugumą
-$serverCode = Get-Content "Gemini-voice-assistant/server.js" -Raw
-if ($serverCode -match "destructivePatterns") {
-    Write-Host "✅ Saugumas: Serverio filtrai aktyvūs" -ForegroundColor Green
+# 3. Patikriname serverio saugumą (Native Tauri)
+if (Test-Path "Gemini-voice-assistant/src-tauri/src/commands.rs") {
+    $rustCode = Get-Content "Gemini-voice-assistant/src-tauri/src/commands.rs" -Raw
+    if ($rustCode -match "destructive_patterns") {
+        Write-Host "✅ Saugumas: Rust komandų filtrai aktyvūs" -ForegroundColor Green
+    } else {
+        Write-Warning "⚠️ Saugumas: Filtrai nerasti Rust komandose!"
+    }
 } else {
-    Write-Warning "⚠️ Saugumas: Filtrai nerasti server.js faile!"
+    Write-Error "❌ Saugumas: commands.rs nerastas!"
 }
 
 Write-Host "🏁 Patikrinimas baigtas!" -ForegroundColor Cyan

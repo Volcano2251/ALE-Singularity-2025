@@ -1,8 +1,19 @@
-# ALE Watchdog - Užtikrina amžiną veikimą
-# Tikrina pagrindinį procesą kas 5 valandas (300 min)
+<#
+.SYNOPSIS
+    ALE Watchdog Service
+.DESCRIPTION
+    Runs an infinite loop to monitor and restart critical background processes (infinite-plan.ps1).
+    Logs status to X-RESEARCH-LAB/brain/WATCHDOG_LOG.txt.
+#>
 
-$ScriptPath = "C:\Users\User\.gemini\commands\infinite-plan.ps1"
-$LogPath = "C:\Users\User\.gemini\X-RESEARCH-LAB\brain\WATCHDOG_LOG.txt"
+$ScriptPath = "$PSScriptRoot\infinite-plan.ps1"
+$LogPath = "$PSScriptRoot\..\X-RESEARCH-LAB\brain\WATCHDOG_LOG.txt"
+
+# Ensure log directory exists
+$LogDir = Split-Path $LogPath -Parent
+if (-not (Test-Path $LogDir)) {
+    New-Item -ItemType Directory -Path $LogDir -Force | Out-Null
+}
 
 while ($true) {
     $Timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
@@ -11,12 +22,13 @@ while ($true) {
     $Running = Get-Process powershell -ErrorAction SilentlyContinue | Where-Object { $_.CommandLine -like "*infinite-plan.ps1*" }
     
     if (-not $Running) {
-        "$Timestamp: [ALARM] Pagrindinis procesas rastas negyvas. Prikeliu..." | Out-File $LogPath -Append
-        Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File $ScriptPath" -WindowStyle Hidden
+        "${Timestamp}: [ALARM] Pagrindinis procesas rastas negyvas. Prikeliu..." | Out-File $LogPath -Append
+        # Start in a new window/process
+        Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File `"$ScriptPath`"" -WindowStyle Hidden
     } else {
-        "$Timestamp: [OK] Sistema veikia stabiliai." | Out-File $LogPath -Append
+        "${Timestamp}: [OK] Sistema veikia stabiliai." | Out-File $LogPath -Append
     }
 
-    # Laukiame 300 minučių
-    Start-Sleep -Seconds (300 * 60)
+    # Laukiame 5 minučių
+    Start-Sleep -Seconds 300
 }

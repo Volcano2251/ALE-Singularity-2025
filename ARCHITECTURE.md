@@ -16,7 +16,16 @@
 2. **Local Work**: `TODO.md` -> `start-tasks.ps1` -> `Jules Sessions`.
 3. **Gemini Feedback**: Gemini CLI analizuoja kodą -> įrašo į `TODO.md` -> Jules sutvarko.
 
+## Evaluation Framework
+- `evaluation/`: Workspace kokybės vertinimo sistema.
+  - `run-evaluation.ps1`: Pagrindinis vertinimo skriptas.
+  - `metrics/code-quality.ps1`: Kodo kokybės metrikos.
+  - `metrics/automation.ps1`: Automatizacijos efektyvumas.
+  - `metrics/agent-performance.ps1`: AI agentų našumas.
+  - `benchmarks/baseline.json`: Baziniai parametrai.
+
 ## Geriausios praktikos
 - Naudoti `checkpointing` prieš bet kokius masinius pakeitimus.
 - Visas naujas žinias saugoti `knowledge-base/` kataloge.
 - Naudoti `/jules` didelės apimties refaktūrizavimui.
+- Reguliariai vykdyti `.\evaluation\run-evaluation.ps1` kokybės stebėjimui.

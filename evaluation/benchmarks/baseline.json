@@ -1,0 +1,56 @@
+{
+    "name": "workspace-baseline",
+    "version": "1.0.0",
+    "created": "2025-12-29",
+    "description": "Bazinės workspace metrikos palyginimui",
+    "thresholds": {
+        "code_quality": {
+            "minimum": 60,
+            "target": 80,
+            "excellent": 90
+        },
+        "automation": {
+            "minimum": 60,
+            "target": 80,
+            "excellent": 90
+        },
+        "agent_performance": {
+            "minimum": 60,
+            "target": 80,
+            "excellent": 90
+        },
+        "overall": {
+            "minimum": 60,
+            "target": 80,
+            "excellent": 90
+        }
+    },
+    "weights": {
+        "code_quality": 0.35,
+        "automation": 0.35,
+        "agent_performance": 0.30
+    },
+    "expected_files": {
+        "documentation": [
+            "README.md",
+            "ARCHITECTURE.md",
+            "DEVELOPMENT_GUIDE.md",
+            "TODO.md",
+            "GEMINI.md",
+            "PRD.md"
+        ],
+        "directories": [
+            "commands",
+            "extensions",
+            "knowledge-base",
+            ".github",
+            "evaluation"
+        ],
+        "automation_scripts": [
+            "commands/start-tasks.ps1",
+            "commands/delegate.ps1",
+            "commands/jules-pipe.ps1",
+            "commands/sync-github-issues.ps1"
+        ]
+    }
+}

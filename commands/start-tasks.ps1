@@ -10,8 +10,8 @@ if (-not (Test-Path $File)) {
 
 Write-Host "Nuskaitomos užduotys iš $File..." -ForegroundColor Cyan
 
-# Nuskaitome ir filtruojame nebaigtas užduotis
-$tasks = Get-Content $File | Where-Object { $_ -match "^- \[ \] (.+)" } | ForEach-Object { $matches[1].Trim() }
+# Nuskaitome ir filtruojame nebaigtas užduotis (palaikome - [ ] ir 1. [ ] formatus)
+$tasks = Get-Content $File | Where-Object { $_ -match "^(?:-|\d+\.) \[ \] (.+)" } | ForEach-Object { $matches[1].Trim() }
 
 if ($tasks.Count -eq 0) {
     Write-Warning "Nebaigtų užduočių nerasta."
@@ -27,9 +27,8 @@ Write-Host "Vykdomas automatinis paleidimas (Autonomous Mode)..." -ForegroundCol
 # Paleidžiame sesijas
 foreach ($task in $tasks) {
     Write-Host "Paleidžiama sesija: '$task'..." -ForegroundColor Green
-    # Pastaba: Čia naudojama 'jules' komanda. Įsitikinkite, kad ji pasiekiama jūsų PATH.
-    # Jei norite tik simuliuoti, užkomentuokite žemiau esančią eilutę.
-    Start-Process -FilePath "jules" -ArgumentList "remote", "new", "--repo", ".", "--session", "`"$task`"" -NoNewWindow -Wait
+    # Naudojame konkretų repo pavadinimą
+    & jules remote new --repo "Volcano2251/ALE-Singularity-2025" --session "$task"
 }
 
 Write-Host "Visos sesijos inicijuotos!" -ForegroundColor Cyan
