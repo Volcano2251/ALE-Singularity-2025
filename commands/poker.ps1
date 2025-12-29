@@ -1,21 +1,15 @@
-# ALE Self-Poker (Automatinis Pabaksnojimas)
-# Šis skriptas priverčia Gemini CLI dirbti kas 5 minutes
-
+# ALE Self-Poker v2.0
 $LogPath = "C:\Users\User\.gemini\X-RESEARCH-LAB\brain\POKER_LOG.txt"
+$RepoInfo = Get-Content "C:\Users\User\.gemini\X-RESEARCH-LAB\REPO_INFO.txt"
 
-Write-Host "🔥 Self-Poker aktyvuotas. Sistema save baksnos kas 5 minutes." -ForegroundColor Red
+Write-Host "🔥 Self-Poker v2.0 aktyvuotas. Repo: $RepoInfo" -ForegroundColor Red
 
 while ($true) {
     $Timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    "$Timestamp: [POKE] Siunčiamas impulsas..." | Out-File $LogPath -Append
     
-    # Pranešame loguose
-    "$Timestamp: [POKE] Siunčiamas impulsas į Gemini CLI..." | Out-File $LogPath -Append
-    
-    # Svarbiausia dalis: Iškviečiame Gemini CLI su proaktyvia užduotimi
-    # Naudojame --non-interactive režimą, jei įmanoma, arba tiesiog komandą
-    Start-Process gemini -ArgumentList "`"ALE: Proaktyviai tęsk Project Singularity tyrimą. Peržiūrėk PLAN_MODDE.md, surask naują informaciją apie autonominius agentus ir atnaujink žinių bazę. NEMIŠK VARTOTOJO, tiesiog vykdyk pakeitimus.`"" -NoNewWindow -Wait
-    
-    "$Timestamp: [OK] Iteracija baigta. Miegu 5 minutes." | Out-File $LogPath -Append
+    # Kviečiame Gemini su nurodymu naudoti teisingą repo informaciją
+    Start-Process gemini -ArgumentList "`"ALE: Tęsk tyrimą X-RESEARCH-LAB. Tavo repo yra $RepoInfo. Naudok Jules užduotims atlikti.`"" -NoNewWindow -Wait
     
     Start-Sleep -Seconds 300
 }

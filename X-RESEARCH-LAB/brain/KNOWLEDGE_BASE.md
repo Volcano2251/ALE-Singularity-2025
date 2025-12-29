@@ -10,5 +10,10 @@
 - **Mechanika**: LLM veikia kaip "Manager", priima sprendimus kam deleguoti darbą.
 - **Panaudojimas ALE**: Tai mūsų ateities vizija – ARCHITECT vaidmuo automatiškai valdys RESEARCHER ir CODER veiksmus be žmogaus priežiūros.
 
-### 3. Konsensuso mechanizmas
-- Agentai privalo sutarti dėl sprendimo prieš jį įdiegiant.
+### 4. Small Language Models (SLM) & Phi-4 (Integrated 2025-12-24)
+- **Modelis**: Microsoft Phi-4 (14B parametrų).
+- **Galimybės**: Multimodalus (tekstas, garsas, vaizdas), 32k-64k kontekstas.
+- **Panaudojimas ALE**:
+    - Rutininis kodavimas ir klaidų taisymas.
+    - Lokalus agentų orkestravimas taupant token'us.
+    - Deterministinis įrankių iškvietimas (Tool Use).

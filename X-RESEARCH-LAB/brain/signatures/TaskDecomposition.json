@@ -1,0 +1,22 @@
+{
+  "signature_name": "TaskDecomposition",
+  "input_fields": {
+    "user_request": "Tekstinė užduotis iš vartotojo ar plano."
+  },
+  "output_fields": {
+    "atomic_steps": "Sąrašas (List) užduočių, kurios gali būti atliktos vienu įrankio iškvietimu.",
+    "required_skills": "Sąrašas Skill_ID iš SKILL_REGISTRY.json."
+  },
+  "example": {
+    "input": "Sukurk saugų serverį ir įkelk į GitHub.",
+    "output": {
+      "atomic_steps": [
+        "Sukurti server.js su saugumo filtrais.",
+        "Inicijuoti git repozitoriją.",
+        "Sukurti GitHub repo per gh CLI.",
+        "Push'inti kodą."
+      ],
+      "required_skills": ["code-analysis", "skill-creation"]
+    }
+  }
+}
